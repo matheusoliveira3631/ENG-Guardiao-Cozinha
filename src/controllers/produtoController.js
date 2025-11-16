@@ -28,6 +28,7 @@ function create(req, res) {
       nome: req.body.nome,
       categoria: req.body.categoria,
       quantidade: req.body.quantidade,
+      estoqueMinimo: req.body.estoqueMinimo,
       dataValidade: req.body.dataValidade
     };
     
@@ -66,6 +67,7 @@ function update(req, res) {
       nome: req.body.nome,
       categoria: req.body.categoria,
       quantidade: req.body.quantidade,
+      estoqueMinimo: req.body.estoqueMinimo,
       dataValidade: req.body.dataValidade
     };
     

@@ -11,6 +11,7 @@
         <th class="px-4 py-3">Nome</th>
         <th class="px-4 py-3">Categoria</th>
         <th class="px-4 py-3">Quantidade</th>
+        <th class="px-4 py-3">Status</th>
         <th class="px-4 py-3">Data de Validade</th>
         <th class="px-4 py-3">Ações</th>
       </tr>
@@ -22,6 +23,9 @@
             <td class="px-4 py-3"><%= p.nome %></td>
             <td class="px-4 py-3"><%= p.categoria %></td>
             <td class="px-4 py-3"><%= p.quantidade %></td>
+            <td class="px-4 py-3">
+              <span class="inline-flex rounded px-2 py-0.5 text-xs font-medium <%= p.statusColor %>"><%= p.statusLabel %></span>
+            </td>
             <td class="px-4 py-3"><%= p.dataValidade %></td>
             <td class="px-4 py-3 space-x-2">
               <a href="/produtos/<%= p.id %>/editar" class="inline-flex items-center rounded bg-emerald-600 px-3 py-1.5 text-white text-xs hover:bg-emerald-700">Editar</a>

@@ -12,5 +12,13 @@
     "categoria": "categoria 4",
     "quantidade": 20,
     "dataValidade": "1998-02-21"
+  },
+  {
+    "id": "17633327729081vid6ciz8",
+    "nome": "teste produto",
+    "categoria": "11",
+    "quantidade": 16,
+    "estoqueMinimo": 15,
+    "dataValidade": "21212-12-12"
   }
 ]

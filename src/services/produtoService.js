@@ -6,7 +6,26 @@ const movimentacaoRepository = require('../repositories/movimentacaoRepository')
  * @returns {Array} array de produtos
  */
 function listarProdutos() {
-  return produtoRepository.getAllProdutos();
+  const produtos = produtoRepository.getAllProdutos();
+  return produtos.map(p => {
+    const quantidade = Number(p.quantidade || 0);
+    const estoqueMinimo = Number(p.estoqueMinimo || 0);
+    let statusLabel = 'OK';
+    let statusColor = 'bg-emerald-100 text-emerald-700';
+    if (estoqueMinimo > 0) {
+      if (quantidade < estoqueMinimo) {
+        statusLabel = 'Abaixo do mínimo';
+        statusColor = 'bg-red-100 text-red-700';
+      } else if (quantidade <= estoqueMinimo + 5) {
+        statusLabel = 'Próximo do mínimo';
+        statusColor = 'bg-amber-100 text-amber-700';
+      } else {
+        statusLabel = 'Acima do mínimo';
+        statusColor = 'bg-emerald-100 text-emerald-700';
+      }
+    }
+    return { ...p, quantidade, estoqueMinimo, statusLabel, statusColor };
+  });
 }
 
 /**
@@ -27,8 +46,8 @@ function obterProduto(id) {
 function criarProduto(dadosProduto) {
   // Validação de campos obrigatórios
   if (!dadosProduto.nome || !dadosProduto.categoria || 
-      dadosProduto.quantidade === undefined || !dadosProduto.dataValidade) {
-    throw new Error('Campos obrigatórios faltando: nome, categoria, quantidade, dataValidade');
+      dadosProduto.quantidade === undefined || !dadosProduto.dataValidade || dadosProduto.estoqueMinimo === undefined) {
+    throw new Error('Campos obrigatórios faltando: nome, categoria, quantidade, dataValidade, estoqueMinimo');
   }
   
   // Gerar ID simples (timestamp + random)
@@ -39,6 +58,7 @@ function criarProduto(dadosProduto) {
     nome: dadosProduto.nome,
     categoria: dadosProduto.categoria,
     quantidade: Number(dadosProduto.quantidade),
+    estoqueMinimo: Math.max(0, Number(dadosProduto.estoqueMinimo)),
     dataValidade: dadosProduto.dataValidade
   };
   
@@ -61,14 +81,15 @@ function atualizarProduto(id, dadosProduto) {
   
   // Validação de campos obrigatórios
   if (!dadosProduto.nome || !dadosProduto.categoria || 
-      dadosProduto.quantidade === undefined || !dadosProduto.dataValidade) {
-    throw new Error('Campos obrigatórios faltando: nome, categoria, quantidade, dataValidade');
+      dadosProduto.quantidade === undefined || !dadosProduto.dataValidade || dadosProduto.estoqueMinimo === undefined) {
+    throw new Error('Campos obrigatórios faltando: nome, categoria, quantidade, dataValidade, estoqueMinimo');
   }
   
   const dadosAtualizados = {
     nome: dadosProduto.nome,
     categoria: dadosProduto.categoria,
     quantidade: Number(dadosProduto.quantidade),
+    estoqueMinimo: Math.max(0, Number(dadosProduto.estoqueMinimo)),
     dataValidade: dadosProduto.dataValidade
   };
   

@@ -14,5 +14,13 @@
     "tipo": "SAIDA",
     "quantidade": 10,
     "data": "54545-05-04"
+  },
+  {
+    "id": "1763332806669fuucqgth9",
+    "produtoId": "17633327729081vid6ciz8",
+    "usuarioId": "1",
+    "tipo": "ENTRADA",
+    "quantidade": 6,
+    "data": "1111-11-11"
   }
 ]
