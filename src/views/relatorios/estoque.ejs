@@ -1,0 +1,35 @@
+<%- include('../layout', { pageTitle: 'Relatório de Estoque', activeMenu: 'relatorios' }) %>
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-2xl font-semibold">Relatório de Estoque</h1>
+  <div class="text-sm text-gray-500">Atualizado em <%= new Date().toLocaleDateString('pt-BR') %></div>
+</div>
+
+<div class="overflow-x-auto bg-white shadow rounded-lg">
+  <table class="min-w-full">
+    <thead>
+      <tr class="bg-gray-100 text-left text-sm text-gray-700">
+        <th class="px-4 py-3">Produto</th>
+        <th class="px-4 py-3">Quantidade Atual</th>
+        <th class="px-4 py-3">Data de Validade</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y">
+      <% if (produtos && produtos.length) { %>
+        <% produtos.forEach(p => { %>
+          <% const emBaixa = Number(p.quantidade) <= 5; %>
+          <% const hoje = new Date(); const dv = new Date(p.dataValidade); const diff = Math.ceil((dv - hoje)/(1000*60*60*24)); const proximo = diff >= 0 && diff <= 7; %>
+          <tr class="text-sm <%= emBaixa ? 'bg-red-50' : (proximo ? 'bg-amber-50' : '') %>">
+            <td class="px-4 py-3"><%= p.nome %></td>
+            <td class="px-4 py-3 <%= emBaixa ? 'text-red-700 font-semibold' : '' %>"><%= p.quantidade %></td>
+            <td class="px-4 py-3 <%= proximo ? 'text-amber-700' : '' %>"><%= p.dataValidade %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="3" class="px-4 py-6 text-center text-gray-500">Sem dados para exibir.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include('../partials/end') %>

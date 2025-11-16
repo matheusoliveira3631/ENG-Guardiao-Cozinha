@@ -1,0 +1,27 @@
+<%- include('../layout', { pageTitle: 'Registrar Saída', activeMenu: 'movimentacoes' }) %>
+<h1 class="text-2xl font-semibold mb-4">Registrar Saída</h1>
+
+<form action="/movimentacoes/saida" method="POST" class="bg-white shadow rounded-lg p-6 space-y-4" onsubmit="return validarFormularioMovimentacao();">
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1" for="produtoId">Produto</label>
+    <select id="produtoId" name="produtoId" class="w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+      <option value="">Selecione...</option>
+      <% (produtos || []).forEach(p => { %>
+        <option value="<%= p.id %>"><%= p.nome %></option>
+      <% }) %>
+    </select>
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1" for="quantidade">Quantidade</label>
+    <input class="w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" type="number" id="quantidade" name="quantidade" min="1" required />
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1" for="data">Data</label>
+    <input class="w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" type="date" id="data" name="data" />
+  </div>
+  <div class="flex items-center gap-2">
+    <button type="submit" class="rounded bg-red-600 px-4 py-2 text-white font-medium hover:bg-red-700">Registrar</button>
+    <a href="/movimentacoes" class="rounded bg-gray-200 px-4 py-2 text-gray-700 hover:bg-gray-300">Cancelar</a>
+  </div>
+</form>
+<%- include('../partials/end') %>

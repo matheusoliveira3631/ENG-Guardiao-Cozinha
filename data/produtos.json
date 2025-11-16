@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1763321230665alyalm9fw",
+    "nome": "produto3",
+    "categoria": "cat1",
+    "quantidade": 20,
+    "dataValidade": "1999-03-12"
+  },
+  {
+    "id": "1763321300115dz01uiyq1",
+    "nome": "produto1",
+    "categoria": "categoria 4",
+    "quantidade": 20,
+    "dataValidade": "1998-02-21"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "nome": "Admin Padrão",
+    "email": "admin@guardiao.com",
+    "senha": "admin123",
+    "perfil": "ADMINISTRADOR"
+  },
+  {
+    "id": "2",
+    "nome": "Operador Teste",
+    "email": "operador@guardiao.com",
+    "senha": "operador123",
+    "perfil": "OPERADOR"
+  },
+  {
+    "id": "3",
+    "nome": "Gestor Teste",
+    "email": "gestor@guardiao.com",
+    "senha": "gestor123",
+    "perfil": "GESTOR"
+  }
+]

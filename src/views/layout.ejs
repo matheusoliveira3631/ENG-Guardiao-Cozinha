@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' · ' : '' %>Guardião da Cozinha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Opcional: estilos adicionais locais -->
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-40 bg-indigo-600 text-white shadow">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <a href="/" class="font-semibold tracking-tight">Guardião da Cozinha</a>
+        <nav class="hidden sm:flex items-center gap-4 text-sm">
+          <a href="/produtos" class="hover:underline <%= (typeof activeMenu !== 'undefined' && activeMenu==='produtos') ? 'underline' : '' %>">Produtos</a>
+          <a href="/movimentacoes" class="hover:underline <%= (typeof activeMenu !== 'undefined' && activeMenu==='movimentacoes') ? 'underline' : '' %>">Movimentações</a>
+          <a href="/relatorios" class="hover:underline <%= (typeof activeMenu !== 'undefined' && activeMenu==='relatorios') ? 'underline' : '' %>">Relatórios</a>
+          <% if (typeof usuario !== 'undefined' && usuario) { %>
+            <a href="/logout" class="hover:underline">Sair</a>
+          <% } else { %>
+            <a href="/login" class="hover:underline">Entrar</a>
+          <% } %>
+        </nav>
+        <!-- Mobile menu (simple) -->
+        <div class="sm:hidden">
+          <a href="#menu" class="px-3 py-2 rounded bg-indigo-500/50 text-white text-sm">Menu</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Container -->
+  <main class="max-w-5xl mx-auto px-4 py-6">
+    <!-- Feedback messages -->
+    <% if (typeof sucesso !== 'undefined' && sucesso) { %>
+      <div class="mb-4 rounded border border-emerald-200 bg-emerald-50 text-emerald-800 px-4 py-3"><%= sucesso %></div>
+    <% } %>
+    <% if (typeof erro !== 'undefined' && erro) { %>
+      <div class="mb-4 rounded border border-red-200 bg-red-50 text-red-800 px-4 py-3"><%= erro %></div>
+    <% } %>
+
+    <!-- As views incluirão este layout e renderizarão o conteúdo abaixo -->

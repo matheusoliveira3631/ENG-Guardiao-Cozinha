@@ -1,0 +1,52 @@
+<%- include('../layout', { pageTitle: 'Movimentações por Usuário', activeMenu: 'relatorios' }) %>
+<h1 class="text-2xl font-semibold mb-4">Movimentações por Usuário</h1>
+
+<form method="GET" action="/relatorios/movimentacoes-usuario" class="bg-white shadow rounded-lg p-4 mb-4 grid grid-cols-1 sm:grid-cols-4 gap-3">
+  <div>
+    <label for="usuarioId" class="block text-sm font-medium text-gray-700 mb-1">Usuário</label>
+    <input type="text" id="usuarioId" name="usuarioId" value="<%= typeof usuarioId !== 'undefined' ? usuarioId : '' %>" class="w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="ID do usuário" />
+  </div>
+  <div>
+    <label for="dataInicio" class="block text-sm font-medium text-gray-700 mb-1">Data Início</label>
+    <input type="date" id="dataInicio" name="dataInicio" value="<%= typeof dataInicio !== 'undefined' ? dataInicio : '' %>" class="w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  </div>
+  <div>
+    <label for="dataFim" class="block text-sm font-medium text-gray-700 mb-1">Data Fim</label>
+    <input type="date" id="dataFim" name="dataFim" value="<%= typeof dataFim !== 'undefined' ? dataFim : '' %>" class="w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+  </div>
+  <div class="flex items-end">
+    <button type="submit" class="w-full rounded bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700">Filtrar</button>
+  </div>
+</form>
+
+<div class="overflow-x-auto bg-white shadow rounded-lg">
+  <table class="min-w-full">
+    <thead>
+      <tr class="bg-gray-100 text-left text-sm text-gray-700">
+        <th class="px-4 py-3">Produto</th>
+        <th class="px-4 py-3">Tipo</th>
+        <th class="px-4 py-3">Quantidade</th>
+        <th class="px-4 py-3">Data</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y">
+      <% if (movimentacoes && movimentacoes.length) { %>
+        <% movimentacoes.forEach(m => { %>
+          <tr class="text-sm">
+            <td class="px-4 py-3"><%= m.produtoNome || m.produtoId %></td>
+            <td class="px-4 py-3">
+              <span class="inline-block rounded px-2 py-0.5 text-xs font-medium <%= m.tipo === 'ENTRADA' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700' %>"><%= m.tipo %></span>
+            </td>
+            <td class="px-4 py-3"><%= m.quantidade %></td>
+            <td class="px-4 py-3"><%= m.data %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="4" class="px-4 py-6 text-center text-gray-500">Nenhuma movimentação para este usuário/período.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include('../partials/end') %>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1763321330874vrx9fqn4k",
+    "produtoId": "1763321230665alyalm9fw",
+    "usuarioId": "1",
+    "tipo": "ENTRADA",
+    "quantidade": 10,
+    "data": "2211-02-11"
+  },
+  {
+    "id": "1763325165536moy5wme7v",
+    "produtoId": "1763321300115dz01uiyq1",
+    "usuarioId": "1",
+    "tipo": "SAIDA",
+    "quantidade": 10,
+    "data": "54545-05-04"
+  }
+]

@@ -1,0 +1,145 @@
+/* Estilos globais para Guardião da Cozinha */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header e Navegação */
+header {
+  background: #2c3e50;
+  color: #fff;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+nav {
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: #34495e;
+}
+
+/* Formulários */
+/* Evite estilizar todos os <form> globalmente para não afetar botões inline em tabelas. */
+/* Use utilitários do Tailwind nas views ou, se necessário, crie uma classe específica:
+.form-card { background:#fff; padding:2rem; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); max-width:600px; margin:0 auto; }
+*/
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button, .btn {
+  background: #3498db;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+button:hover, .btn:hover {
+  background: #2980b9;
+}
+
+.btn-danger {
+  background: #e74c3c;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  background: #fff;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #34495e;
+  color: #fff;
+}
+
+tr:hover {
+  background: #f5f5f5;
+}
+
+/* Mensagens de erro */
+.error {
+  background: #e74c3c;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Utilitários */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}

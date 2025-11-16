@@ -1,0 +1,42 @@
+<%- include('../layout', { pageTitle: 'Movimentações', activeMenu: 'movimentacoes' }) %>
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-2xl font-semibold">Movimentações</h1>
+  <div class="flex gap-2">
+    <a href="/movimentacoes/entrada" class="inline-flex items-center rounded bg-emerald-600 px-4 py-2 text-white text-sm font-medium hover:bg-emerald-700">Registrar Entrada</a>
+    <a href="/movimentacoes/saida" class="inline-flex items-center rounded bg-red-600 px-4 py-2 text-white text-sm font-medium hover:bg-red-700">Registrar Saída</a>
+  </div>
+</div>
+
+<div class="overflow-x-auto bg-white shadow rounded-lg">
+  <table class="min-w-full">
+    <thead>
+      <tr class="bg-gray-100 text-left text-sm text-gray-700">
+        <th class="px-4 py-3">Produto</th>
+        <th class="px-4 py-3">Tipo</th>
+        <th class="px-4 py-3">Quantidade</th>
+        <th class="px-4 py-3">Usuário</th>
+        <th class="px-4 py-3">Data</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y">
+      <% if (movimentacoes && movimentacoes.length) { %>
+        <% movimentacoes.forEach(m => { %>
+          <tr class="text-sm">
+            <td class="px-4 py-3"><%= m.produtoNome || m.produtoId %></td>
+            <td class="px-4 py-3">
+              <span class="inline-block rounded px-2 py-0.5 text-xs font-medium <%= m.tipo === 'ENTRADA' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700' %>"><%= m.tipo %></span>
+            </td>
+            <td class="px-4 py-3"><%= m.quantidade %></td>
+            <td class="px-4 py-3"><%= m.usuarioNome || m.usuarioId %></td>
+            <td class="px-4 py-3"><%= m.data %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="5" class="px-4 py-6 text-center text-gray-500">Nenhuma movimentação registrada.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include('../partials/end') %>
