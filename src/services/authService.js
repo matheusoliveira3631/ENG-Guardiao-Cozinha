@@ -13,7 +13,6 @@ function login(email, senha) {
     return null;
   }
   
-  // Validação simples de senha (pode ser melhorada com hash)
   if (usuario.senha !== senha) {
     return null;
   }
