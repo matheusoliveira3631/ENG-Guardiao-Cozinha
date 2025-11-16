@@ -1,0 +1,30 @@
+{
+  "name": "eng-guardiao-cozinha",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusoliveira3631/ENG-Guardiao-Cozinha.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusoliveira3631/ENG-Guardiao-Cozinha/issues"
+  },
+  "homepage": "https://github.com/matheusoliveira3631/ENG-Guardiao-Cozinha#readme",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
