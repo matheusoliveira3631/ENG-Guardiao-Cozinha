@@ -10,7 +10,7 @@
     "id": "1763321300115dz01uiyq1",
     "nome": "produto1",
     "categoria": "categoria 4",
-    "quantidade": 20,
+    "quantidade": 22,
     "dataValidade": "1998-02-21"
   },
   {
@@ -20,5 +20,13 @@
     "quantidade": 16,
     "estoqueMinimo": 15,
     "dataValidade": "21212-12-12"
+  },
+  {
+    "id": "1763347311638gp5if1xec",
+    "nome": "33324",
+    "categoria": "324324",
+    "quantidade": 324,
+    "estoqueMinimo": 34324,
+    "dataValidade": "275760-04-12"
   }
 ]

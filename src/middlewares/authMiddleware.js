@@ -23,7 +23,12 @@ function ensureRole(...perfis) {
       return next();
     }
     
-    res.status(403).send('Acesso negado: você não tem permissão para acessar esta página');
+    // Salva mensagem de erro na sessão
+    req.session.erro = 'Acesso negado: você não tem permissão para acessar esta página';
+    
+    // Tenta redirecionar para a página anterior, senão vai para home
+    const referer = req.get('Referer') || '/';
+    return res.redirect(referer);
   };
 }
 

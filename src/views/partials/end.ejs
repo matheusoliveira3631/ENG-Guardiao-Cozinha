@@ -4,6 +4,46 @@
       <p>&copy; <%= new Date().getFullYear() %> Guardião da Cozinha</p>
     </div>
   </footer>
+  
+  <script>
+    // Toast notification system
+    function showToast(message, type = 'error') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      const bgColor = type === 'error' ? 'bg-red-600' : type === 'success' ? 'bg-emerald-600' : 'bg-blue-600';
+      const icon = type === 'error' ? '⛔' : type === 'success' ? '✓' : 'ℹ';
+      
+      toast.className = `${bgColor} text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px] max-w-md transform transition-all duration-300 ease-out translate-x-full opacity-0`;
+      toast.innerHTML = `
+        <span class="text-2xl">${icon}</span>
+        <span class="flex-1 font-medium">${message}</span>
+        <button onclick="this.parentElement.remove()" class="text-white/80 hover:text-white text-xl leading-none">&times;</button>
+      `;
+      
+      container.appendChild(toast);
+      
+      // Trigger animation
+      setTimeout(() => {
+        toast.classList.remove('translate-x-full', 'opacity-0');
+      }, 10);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        toast.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 5000);
+    }
+    
+    // Show toast if there's an error message from server
+    <% if (typeof erro !== 'undefined' && erro) { %>
+      showToast('<%= erro.replace(/'/g, "\\'") %>', 'error');
+    <% } %>
+    <% if (typeof sucesso !== 'undefined' && sucesso) { %>
+      showToast('<%= sucesso.replace(/'/g, "\\'") %>', 'success');
+    <% } %>
+  </script>
+  
   <script src="/js/main.js"></script>
 </body>
 </html>

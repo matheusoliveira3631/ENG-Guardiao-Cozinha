@@ -22,5 +22,13 @@
     "tipo": "ENTRADA",
     "quantidade": 6,
     "data": "1111-11-11"
+  },
+  {
+    "id": "1763347333866w4ew388eu",
+    "produtoId": "1763321300115dz01uiyq1",
+    "usuarioId": "3",
+    "tipo": "ENTRADA",
+    "quantidade": 2,
+    "data": "1212-12-12"
   }
 ]

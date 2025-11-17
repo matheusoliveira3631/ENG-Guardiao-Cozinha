@@ -32,14 +32,9 @@
     </div>
   </header>
 
+  <!-- Toast Container (fixed position) -->
+  <div id="toast-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
+
   <!-- Page Container -->
   <main class="max-w-5xl mx-auto px-4 py-6">
-    <!-- Feedback messages -->
-    <% if (typeof sucesso !== 'undefined' && sucesso) { %>
-      <div class="mb-4 rounded border border-emerald-200 bg-emerald-50 text-emerald-800 px-4 py-3"><%= sucesso %></div>
-    <% } %>
-    <% if (typeof erro !== 'undefined' && erro) { %>
-      <div class="mb-4 rounded border border-red-200 bg-red-50 text-red-800 px-4 py-3"><%= erro %></div>
-    <% } %>
-
     <!-- As views incluirão este layout e renderizarão o conteúdo abaixo -->
